@@ -33,14 +33,16 @@ Build status for rpi-6.6.y:
 
 
 ## CROSS_COMPILE on Ubuntu server
-
+```console
 KERNEL=kernel7l
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j4 zImage modules dtbs
-
+```
 
 # Compile on Rasberry PI 64 bits
+
+```console
 KERNEL=kernel8
 make bcm2711_defconfig
 make menuconfig
@@ -53,9 +55,11 @@ sudo cp arch/arm64/boot/Image /boot/$KERNEL.img
 ls -la /boot/$KERNEL.img
 
 sudo dtc -@ -I dts -O dtb -o iris-kd070-panel.dtbo iris-kd070-panel.dts
-
+```
 
 # Compile on Rasberry PI 32 bits
+
+```console
 sudo apt install git bc bison flex libssl-dev make -y
 sudo apt install libncurses5-dev -y 
 
@@ -71,3 +75,4 @@ sudo cp arch/arm/boot/dts/*.dtb /boot/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
 sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
+```
