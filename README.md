@@ -76,3 +76,29 @@ sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
 sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 ```
+
+
+
+# 2024 versions
+
+```console
+
+sudo apt install git bc bison flex libssl-dev make -y
+sudo apt install libncurses5-dev -y 
+
+git clone https://github.com/nutkondee/rpikernel.git
+cd ~/rpikernel
+KERNEL=kernel7l
+make bcm2711_defconfig
+make menuconfig
+
+make -j4 zImage modules dtbs
+sudo make modules_install
+
+
+sudo cp arch/arm/boot/dts/*.dtb /boot/firmware/
+sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
+sudo cp arch/arm/boot/dts/overlays/README /boot/firmware/overlays/
+sudo cp arch/arm/boot/zImage /boot/firmware/$KERNEL.img
+
+```
